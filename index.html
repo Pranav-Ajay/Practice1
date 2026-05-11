@@ -733,6 +733,7 @@
   </li>
 </ol>
 
+<button onclick=getDetails()>SUBMIT</button>
 
 
 <script>
@@ -740,7 +741,7 @@
 document.getElementById("a").addEventListener("input", function() {
     let val = parseFloat(this.value) || 0;
     let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
-    document.getElementById("ab").value = result; // Inputs use .value
+    document.getElementById("ab").value = result; 
     calculateTotals();
 });
 
@@ -822,6 +823,7 @@ function getDetails() {
        Details.push(i.value);
     }
     console.log(Details);
+    LocalStorage.setItem("details",JSON.stringify(Details));
     return Details;
 }
 
