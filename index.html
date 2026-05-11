@@ -428,7 +428,7 @@
   
 <li>
   S1 Supply:
-  <input id="ad" type="text">
+  <input type="text">
 </li>
 
   <li>
@@ -823,7 +823,7 @@ function getDetails() {
        Details.push(i.value);
     }
     console.log(Details);
-    LocalStorage.setItem("details",JSON.stringify(Details));
+    localStorage.setItem("details",JSON.stringify(Details));
     return Details;
 }
 
