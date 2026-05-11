@@ -609,6 +609,48 @@ document.getElementById("excelInput").addEventListener("change", function(event)
     reader.readAsArrayBuffer(file);
 });
 
+let allFields = document.querySelectorAll(
+".alldetails input, .alldetails select, .alldetails textarea"
+);
+
+allFields.forEach(field => {
+
+    field.addEventListener("input", autoSave);
+
+    field.addEventListener("change", autoSave);
+});
+
+function autoSave(){
+
+    let details = getDetails();
+
+    localStorage.setItem("studentFormData", JSON.stringify(details));
+}
+
+window.addEventListener("load", function(){
+
+    let savedData = JSON.parse(
+        localStorage.getItem("studentFormData")
+    );
+
+    if(savedData){
+
+        let fields = document.querySelectorAll(
+        ".alldetails input, .alldetails select, .alldetails textarea"
+        );
+
+        fields.forEach((field,index)=>{
+
+            if(savedData[index] !== undefined){
+
+                field.value = savedData[index];
+            }
+        });
+
+        calculateTotals();
+    }
+});
+
 </script>
 
 </body>
