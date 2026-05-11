@@ -304,13 +304,31 @@
   </li>
 
   <li>
+    S1 Percentage%:
+    <input type="number" id="a" step="0.01">
+  </li>
+
+  <li>
     S2 SGPA:
     <input type="number" id="b" step="0.01">
   </li>
 
+   <li>
+    S1=2 Percentage%:
+    <input type="number" id="a" step="0.01">
+  </li>
+
+
   <li>
     S3 SGPA:
     <input type="number" id="c" step="0.01">
+  </li>
+
+  <li>
+
+  <li>
+    S3 Percentage%:
+    <input type="number" id="a" step="0.01">
   </li>
 
   <li>
@@ -319,10 +337,20 @@
   </li>
 
   <li>
+    S4 Percentage%:
+    <input type="number" id="a" step="0.01">
+  </li>
+
+  <li>
     S5 SGPA:
     <input type="number" id="e" step="0.01">
   </li>
 
+<li>
+    S5 Percentage%:
+    <input type="number" id="a" step="0.01">
+  </li>
+  
   <li>
     Current Percentage:
     <p id="f"></p>
@@ -694,7 +722,16 @@ function showInternship(){
 
 }
 
+let Details = [];
+
 let M = document.querySelectorAll(".alldetails");
+
+for(let i of M){
+
+   Details.push(i.value);
+
+}
+
 
 
 </script>
