@@ -727,283 +727,92 @@
 
 <script>
 
-let element = document.getElementById("a");
-
-element.addEventListener("input", function(){
-
-   let xa = sgpa1();
-
-   let ab = document.getElementById("ab");
-
-   ab.innerText = xa;
-
+document.getElementById("a").addEventListener("input", function() {
+    let val = parseFloat(this.value) || 0;
+    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
+    document.getElementById("ab").value = result; // Inputs use .value
+    calculateTotals();
 });
 
-
-function sgpa1(){
-
-   let z =
-   parseFloat(document.getElementById("a").value) || 0;
-  
-   let per1 = (z * 10) - 7.5;
-    return par1;}
-
-  let element = document.getElementById("a");
-
-element.addEventListener("input", function(){
-
-   let xb = sgpa2();
-
-   let av = document.getElementById("ac");
-
-   av.innerText = xb;
-
-});
-  
-function sgpa2(){
-
-   let y =
-   parseFloat(document.getElementById("b").value) || 0;
-  let per2 = (y * 10) - 7.5;
-return par2;}
-
-let element = document.getElementById("a");
-
-element.addEventListener("input", function(){
-
-   let xc = sgpa3();
-
-   let aw = document.getElementById("ad");
-
-   aw.innerText = xc;
-
-});
-  
-function sgpa3(){
-
-   let x =
-   parseFloat(document.getElementById("c").value) || 0;
-     let per3 = (x * 10) - 7.5;
-return par3;}
-
-  let element = document.getElementById("a");
-
-element.addEventListener("input", function(){
-
-   let xm = sgpa4();
-
-   let ax = document.getElementById("ae");
-
-   ax.innerText = xm;
-
-});
-  
-function sgpa4(){
-   let w =
-   parseFloat(document.getElementById("d").value) || 0;
-  let per4 = (w * 10) - 7.5;
-return par4;}
-
-  let element = document.getElementById("a");
-
-element.addEventListener("input", function(){
-
-   let xx = sgpa5();
-
-   let jb = document.getElementById("af");
-
-   aj.innerText = xx;
-
+document.getElementById("b").addEventListener("input", function() {
+    let val = parseFloat(this.value) || 0;
+    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
+    document.getElementById("ac").value = result;
+    calculateTotals();
 });
 
-function sgpa5(){
-
-   let u =
-   parseFloat(document.getElementById("e").value) || 0;
-  let per5 = (u * 10) - 7.5;
-return par5;}
-
-   let element = document.getElementById("a");
-
-element.addEventListener("input", function(){
-
-   let xy = per();
-
-   let as = document.getElementById("f");
-
-   as.innerText = xy;
-
+document.getElementById("c").addEventListener("input", function() {
+    let val = parseFloat(this.value) || 0;
+    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
+    document.getElementById("ad").value = result;
+    calculateTotals();
 });
 
-function per(){
-
-   let total_per =
-   (per1 + per2 + per3 + per4 + per5) / 5;
-return total_par;}
-
-   let element = document.getElementById("a");
-
-element.addEventListener("input", function(){
-
-   let xp = sgpa5();
-
-   let az = document.getElementById("g");
-
-   az.innerText = xp;
-
+document.getElementById("d").addEventListener("input", function() {
+    let val = parseFloat(this.value) || 0;
+    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
+    document.getElementById("ae").value = result;
+    calculateTotals();
 });
 
-  
+document.getElementById("e").addEventListener("input", function() {
+    let val = parseFloat(this.value) || 0;
+    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
+    document.getElementById("af").value = result;
+    calculateTotals();
+});
 
-function cgpa(){
+function calculateTotals() {
+    let s1 = parseFloat(document.getElementById("a").value) || 0;
+    let s2 = parseFloat(document.getElementById("b").value) || 0;
+    let s3 = parseFloat(document.getElementById("c").value) || 0;
+    let s4 = parseFloat(document.getElementById("d").value) || 0;
+    let s5 = parseFloat(document.getElementById("e").value) || 0;
 
-   let totcgpa =
-   (z + y + x + w + u) / 5;
-return totcgpa;}
+    let scores = [s1, s2, s3, s4, s5].filter(v => v > 0);
+    
+    if (scores.length > 0) {
+        let avgCgpa = scores.reduce((a, b) => a + b, 0) / scores.length;
+        let avgPer = (avgCgpa * 10) - 7.5;
 
-
+        document.getElementById("g").innerText = avgCgpa.toFixed(2);
+        document.getElementById("f").innerText = avgPer.toFixed(2) + "%";
+    }
 }
 
 function showOCI(){
-
-   let value =
-   document.getElementById("oci").value;
-
-   let fields =
-   document.getElementById("ociFields");
-
-   if(value=="yes"){
-
-      fields.style.display="block";
-
-   }
-
-   else{
-
-      fields.style.display="none";
-
-   }
-
+    let val = document.getElementById("oci").value;
+    document.getElementById("ociFields").style.display = (val == "yes") ? "block" : "none";
 }
 
 function showSupply(){
-
-   let value =
-   document.getElementById("supply").value;
-
-   let fields =
-   document.getElementById("supplyFields");
-
-   if(value=="yes"){
-
-      fields.style.display="block";
-
-   }
-
-   else{
-
-      fields.style.display="none";
-
-   }
-
+    let val = document.getElementById("supply").value;
+    document.getElementById("supplyFields").style.display = (val == "yes") ? "block" : "none";
 }
 
 function showHigherStudies(){
-
-   let value =
-   document.getElementById("higher").value;
-
-   let fields =
-   document.getElementById("higherFields");
-
-   if(value=="yes"){
-
-      fields.style.display="block";
-
-   }
-
-   else{
-
-      fields.style.display="none";
-
-   }
-
+    let val = document.getElementById("higher").value;
+    document.getElementById("higherFields").style.display = (val == "yes") ? "block" : "none";
 }
 
 function showHackathon(){
-
-   let value =
-   document.getElementById("hackathon").value;
-
-   let fields =
-   document.getElementById("hackathonFields");
-
-   if(value=="yes"){
-
-      fields.style.display="block";
-
-   }
-
-   else{
-
-      fields.style.display="none";
-
-   }
-
+    let val = document.getElementById("hackathon").value;
+    document.getElementById("hackathonFields").style.display = (val == "yes") ? "block" : "none";
 }
 
 function showCourse(){
-
-   let value =
-   document.getElementById("course").value;
-
-   let fields =
-   document.getElementById("courseFields");
-
-   if(value=="yes"){
-
-      fields.style.display="block";
-
-   }
-
-   else{
-
-      fields.style.display="none";
-
-   }
-
+    let val = document.getElementById("course").value;
+    document.getElementById("courseFields").style.display = (val == "yes") ? "block" : "none";
 }
 
-function showInternship(){
-
-   let value =
-   document.getElementById("internship").value;
-
-   let fields =
-   document.getElementById("internshipFields");
-
-   if(value=="yes"){
-
-      fields.style.display="block";
-
-   }
-
-   else{
-
-      fields.style.display="none";
-
-   }
-
-}
-
-let Details = [];
-
-let M = document.querySelectorAll(".alldetails input",".all details select",".all details textarea");
-
-for(let i of M){
-
-   Details.push(i.value);
-
+function getDetails() {
+    let Details = [];
+    let M = document.querySelectorAll(".alldetails input, .alldetails select, .alldetails textarea");
+    for(let i of M){
+       Details.push(i.value);
+    }
+    console.log(Details);
+    return Details;
 }
 
 
