@@ -2,14 +2,14 @@
   <head><title>Login</title></head>
   <body>
     <ol>
-  <li>UID Number:<p>U23080<input></p></li>
+  <li>UID:<p>U23080<input></p></li>    
   <li>RET No.:<input></li>
-  <li>LAST NAME:<input></li>
-  <li id="ax">FULL NAME</li>
+  <li id="a1"> NAME:<input></li> 
+  <li id="a1">MIDDLE NAME:<input></li>   
+  <li id="a2">LAST NAME:<input></li>
   <li>Gender<select><option>Male</option><option>Female</option></select></li>
   <li>EMAIL:<input type="mail"></li>
   <li>ALTERNATE EMAIL:<input type="mail"></li>
-  <li>RAJAGIRI DOMAIN EMAIL ID:<p>U23080<input>@rajagiri.edu.in</p></li>
   <li>MOBILE NUMBER:<input type="tel"></li>
   <li>WHATSAPP MOBILE NO:<input type="tel"></li>
   <li>ALTERNATE MOBILE NUMBER:<input type="tel"></li>
@@ -58,7 +58,7 @@
   <li>Pincode</li>
   <li>Full Address with Pincode (Permanent)</li>
   <li>Current Address (Permanent)</li>
-  <li>Residential Status Hosteller/Day Scholar</li>
+  <li>Residential Status:<select><option>Hosteller</option><option>Day Schola</option></select></li>
   <li>10th school name</li>
   <li>10th school state</li>
   <li>10th school country</li>
@@ -76,35 +76,26 @@
   <li>12th Percentage</li>
   <li>12th Passout Year</li>
   <li>Kerala Entrance Score (if NRI plz mention NRI Quota)</li>
-  <li>S1 SGPA</li>
-  <li>S1 Percentage %</li>
+  <li id="a">S1 SGPA</li>
+  <li>S1 Percentage %:<p id="a1"></li>
   <li>S1 Supply</li>
-  <li>S2 SGPA</li>
-  <li>S2 Percentage %</li>
+  <li id="b">S2 SGPA</li>
+  <li >S2 Percentage %:<p id="a1"></li>
   <li>S2 Supply</li>
-  <li>S3 SGPA</li>
-  <li>S3 Percentage %</li>
+  <li id="c">S3 SGPA</li>
+  <li>S3 Percentage %:<p id="a1"></li>
   <li>S3 supply</li>
-  <li>S4 SGPA</li>
-  <li>S4 percentage %</li>
+  <li id="d">S4 SGPA</li>
+  <li>S4 percentage %:<p id="a1"></li>
   <li>S4 supply</li>
-  <li>S5 SGPA</li>
-  <li>S5 percentage %</li>
+  <li id="e">S5 SGPA</li>
+  <li>S5 percentage %:<p id="a1"></li>
   <li>S5 supply</li>
-  <li>S6 SGPA</li>
-  <li>S6 percentage %</li>
-  <li>S6 Supply</li>
-  <li>S7 SGPA</li>
-  <li>S7 Percentage</li>
-  <li>S7 Supply</li>
-  <li>S8 SGPA</li>
-  <li>S8 Percentage</li>
-  <li>S8 Supply</li>
-  <li>Current %</li>
-  <li>Current CGPA</li>
+  <li>Current %:<p id="f"></p></li>
+  <li>Current CGPA:<p id="g"></p></li>
   <li>Total No: of Live Supply</li>
-  <li>Do you have any history of Supply</li>
-  <li>Are you interested for Higher studies, if yes please mention the country</li>
+  <li>Do you have any history of Supply<select><option>yes</option><option>no</option></select></li>
+  <li>Are you interested for Higher studies, if yes please mention the country:<input><select><option>no</option></select></li>
   <li>Programming Languages Known (In Priority Basis)</li>
   <li>Regional Languages Known(In priority basis)</li>
   <li>Are you interested in Internship cum job (need to go for internship in S8):<select><option>yes</option><option>no</option></select></li>
@@ -133,4 +124,22 @@
 </ol> 
   </body>
 </html>
+
+<script>
+ function percentage(){
+   z=document.getElementById("a");
+   y=document.getElementById("b");
+   x=document.getElementById("c");
+   w=document.getElementById("d");
+   u=document.getElementById("e");
+   per1=(z*10)-7.5;
+   per2=(y*10)-7.5;
+   per3=(x*10)-7.5;
+   per4=(w*10)-7.5;
+   per5=(v*10)-7.5;
+   t=document.getElementById("f");
+   s=document.getElementById("g");
+   total_per=((per1+per2+per3+per4+per5)/500)*100
+   totcgpa=(z+y+x+w+u)/5
+</script>
 
