@@ -63,9 +63,9 @@
   <li>
 
     
-<input type="hidden" name="FULL NAME" value="">
+<input type="hidden" name="FULL NAME" value=""></li>
 
-
+<li>
     Gender:
 
     <select>
@@ -93,6 +93,11 @@
   </li>
 
   <li>
+  RAJAGIRI DOMAIN EMAIL ID:
+  <input type="hidden" value="">
+</li>
+
+  <li>
     MOBILE NUMBER:
     <input type="tel">
   </li>
@@ -107,6 +112,12 @@
     <input type="tel">
   </li>
 
+  <li>
+    DATE OF BIRTH:
+    <input type="date">
+  </li>
+
+  
   <li>
     DATE OF BIRTH:
     <input type="date">
@@ -205,6 +216,11 @@
     <input type="text">
   </li>
 
+    <li>
+    Name of Organization:
+    <input type="text">
+  </li>
+
   <li>
     Mother's Email ID:
     <input type="email">
@@ -222,6 +238,11 @@
 
 <li>
   Local Guardian Occupation:
+  <input type="text">
+</li>
+
+  <li>
+  Local Guardian Organization:
   <input type="text">
 </li>
 
@@ -421,7 +442,6 @@
     <input type="number" id="c" step="0.01">
   </li>
 
-  <li>
 
   <li>
     S3 Percentage%:
@@ -465,6 +485,16 @@
   S5 Supply:
   <input type="text">
 </li>
+
+ <li><input type="hidden" name="S6_SGPA" value=""></li>
+<li><input type="hidden" name="S6_Percentage" value=""></li>
+<li><input type="hidden" name="S6_Supply" value=""></li>
+<li><input type="hidden" name="S7_SGPA" value=""></li>
+<li><input type="hidden" name="S7_Percentage" value=""></li>
+<li><input type="hidden" name="S7_Supply" value=""></li>
+<li><input type="hidden" name="S8_SGPA" value=""></li>
+<li><input type="hidden" name="S8_Percentage" value=""></li>
+<li><input type="hidden" name="S8_Supply" value=""></li>
   
   <li>
     Current Percentage:
@@ -537,6 +567,15 @@
   <textarea></textarea>
 </li>
 
+  
+  <li>
+  Are you interested in Internship cum job (S8)?
+  <select>
+    <option>No</option>
+    <option>Yes</option>
+  </select>
+</li>
+
 
   <li>
 
@@ -600,118 +639,91 @@
 
 </li>
 
-
-
-  <li>
-
-    Internship Done?
-
-    <select id="internship" onchange="showInternship()">
-
-      <option value="no">No</option>
-      <option value="yes">Yes</option>
-
-    </select>
-
+<li>
+    Internship done in:
+    <input type="text" placeholder="Company Name 1">
   </li>
 
-  <div id="internshipFields" class="hidden">
-
+  <div id="internship1Fields">
     <li>
-      Company Name:
+      HR Name of Company:
       <input type="text">
     </li>
-
     <li>
-  Company contact no:
-  <input type="tel">
-</li>
-
-    <li>
-      HR Name:
-      <input type="text">
-    </li>
-
-    <li>
-      HR Contact Number:
+      Contact no of HR:
       <input type="tel">
     </li>
-
-  </div>
-
-    <div id="internshipFields" class="hidden">
-
     <li>
-      Company Name:
-      <input type="text">
-    </li>
-
-    <li>
-  Company contact no:
-  <input type="tel">
-</li>
-
-    <li>
-      HR Name:
-      <input type="text">
-    </li>
-
-    <li>
-      HR Contact Number:
+      Company contact no:
       <input type="tel">
     </li>
-
   </div>
 
   <li>
-  Class Teacher Name:
-  <input type="text" value="Mr. Wilson Joseph">
-</li>
+    Internship done in (Second):
+    <input type="text" placeholder="Company Name 2">
+  </li>
 
-<li>
-  Class Teacher Mobile Number:
-  <input type="tel" value="9600374739">
-</li>
+  <div id="internship2Fields">
+    <li>
+      HR Name of Company:
+      <input type="text">
+    </li>
+    <li>
+      Contact no of HR:
+      <input type="tel">
+    </li>
+    <li>
+      Company contact no:
+      <input type="tel">
+    </li>
+  </div>
 
-<li>
-  Class Teacher Email ID:
-  <input type="email" value="wilsonj@rajagiritech.edu.in">
-</li>
+  <li>
+    Class Teacher Name:
+    <input type="text" value="Mr. Wilson Joseph">
+  </li>
 
-<li>
-  Associate Class Teacher Name:
-  <input type="text">
-</li>
+  <li>
+    Class Teacher Mobile No:
+    <input type="tel" value="9600374739">
+  </li>
 
-<!-- OTHER -->
+  <li>
+    Class Teacher Email Id:
+    <input type="email" value="wilsonj@rajagiritech.edu.in">
+  </li>
 
-<li>
-  Discontinued:
-  <select>
+  <li>
+    Associate Class teacher Name:
+    <input type="text">
+  </li>
 
-    <option>No</option>
-    <option>Yes</option>
+  <li>
+    Discontinued:
+    <select>
+      <option>No</option>
+      <option>Yes</option>
+    </select>
+  </li>
 
-  </select>
+  <li>
+    REMARKS:
+    <textarea></textarea>
+  </li>
 
-</li>
-
-<li>
-  Remarks:
-  <textarea></textarea>
-</li>
-
-<li>
-  Placement Reps:
-  <input type="text">
-</li>
+  <li>
+    PLACEMENT REPS:
+    <input type="text">
+  </li>
 
   <li>
     LinkedIn Profile:
     <input type="url">
   </li>
-
 </ol>
+
+
 
 <button onclick="percentage()">
 
@@ -892,7 +904,7 @@ function showInternship(){
 
 let Details = [];
 
-let M = document.querySelectorAll(".alldetails");
+let M = document.querySelectorAll(".alldetails input",".all details select",".all details textarea");
 
 for(let i of M){
 
