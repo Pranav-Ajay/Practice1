@@ -7,6 +7,8 @@
 
   <style>
 
+    
+
     body{
       font-family:Arial;
       padding:20px;
@@ -29,6 +31,14 @@
 </head>
 
 <body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<div style="margin-top: 20px; padding: 15px; border: 1px solid #ccc; background: #f9f9f9;">
+    <h3>Save to Database</h3>
+    <p>Select your "2023-2027 AD BATCH DATABASE.xlsx" file to update the specific UID row.</p>
+    <input type="file" id="excelInput" accept=".xlsx, .xls">
+</div>
 
 <h2>Student Database Form</h2>
 
@@ -814,6 +824,47 @@ function getDetails() {
     console.log(Details);
     return Details;
 }
+
+document.getElementById('excelInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    const formData = getDetails(); 
+    const currentUID = formData[0].toString().trim(); 
+
+    reader.onload = function(e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+
+        let rows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+      
+        let rowIndex = -1;
+        for (let i = 1; i < rows.length; i++) {
+            if (rows[i][0] && rows[i][0].toString().trim() === currentUID) {
+                rowIndex = i;
+                break;
+            }
+        }
+
+        if (rowIndex !== -1) {
+            rows[rowIndex] = formData;
+            alert("Success: Data for " + currentUID + " has been updated in the list.");
+        } else {
+            rows.push(formData);
+            alert("New Entry: UID " + currentUID + " added to the end of the file.");
+        }
+
+        const newWorksheet = XLSX.utils.aoa_to_sheet(rows);
+        workbook.Sheets[sheetName] = newWorksheet;
+
+        XLSX.writeFile(workbook, "Updated_AD_Batch_Database.xlsx");
+    };
+
+    reader.readAsArrayBuffer(file);
+});
 
 
 
