@@ -725,36 +725,35 @@
 
 
 
-<button onclick="percentage()">
-
-  Calculate CGPA
-
-</button>
-
 <script>
 
 function percentage(){
 
    let z =
    parseFloat(document.getElementById("a").value) || 0;
+   let per1 = (z * 10) - 7.5;
 
    let y =
    parseFloat(document.getElementById("b").value) || 0;
+  let per2 = (y * 10) - 7.5;
 
    let x =
    parseFloat(document.getElementById("c").value) || 0;
+     let per3 = (x * 10) - 7.5;
 
    let w =
    parseFloat(document.getElementById("d").value) || 0;
+  let per4 = (w * 10) - 7.5;
 
    let u =
    parseFloat(document.getElementById("e").value) || 0;
+  let per5 = (u * 10) - 7.5;
 
-   let per1 = (z * 10) - 7.5;
-   let per2 = (y * 10) - 7.5;
-   let per3 = (x * 10) - 7.5;
-   let per4 = (w * 10) - 7.5;
-   let per5 = (u * 10) - 7.5;
+  
+   
+
+   
+   
 
    let total_per =
    (per1 + per2 + per3 + per4 + per5) / 5;
