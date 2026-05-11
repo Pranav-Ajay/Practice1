@@ -1,157 +1,658 @@
+<!DOCTYPE html>
 <html>
-  <head><title>Login</title></head>
-  <body>
-    <ol>
-  <li>UID:<p>U23080<input></p></li>    
-  <li>RET No.:<input></li>
-  <li id="a1"> NAME:<input></li> 
-  <li id="a1">MIDDLE NAME:<input></li>   
-  <li id="a2">LAST NAME:<input></li>
-  <li>Gender<select><option>Male</option><option>Female</option></select></li>
-  <li>EMAIL:<input type="mail"></li>
-  <li>ALTERNATE EMAIL:<input type="mail"></li>
-  <li>MOBILE NUMBER:<input type="tel"></li>
-  <li>WHATSAPP MOBILE NO:<input type="tel"></li>
-  <li>ALTERNATE MOBILE NUMBER:<input type="tel"></li>
-  <li>DATE OF BIRTH (MM-DD-YYYY):<input type="date"></li>
-  <li>DATE OF BIRTH (DD-MM-YYYY):<input type="date"></li>
-  <li>AADHAAR NUMBER</li>
-  <li>PAN CARD NUMBER</li>
-  <li>Indian PASSPORT NUMBER</li>
-  <li>Do you have an OCI Card:<select><option id="k">yes</option><option>no</option></select></li>
-  <li>If Yes Country Name</li>
-  <li>If Yes Card No</li>
-  <li>Driving License No.</li>
-  <li>BLOOD GROUP</li>
-  <li>FATHER'S NAME</li>
-  <li>Father's Mobile number</li>
-  <li>Father's Occupation</li>
-  <li>Name of the Organization</li>
-  <li>Father's Email ID</li>
-  <li>Mother's Name</li>
-  <li>Mother's Mobile number</li>
-  <li>Mother's Occupation</li>
-  <li>Name of Organization</li>
-  <li>Mother's Email ID</li>
-  <li>Local Guardian Name</li>
-  <li>Local Guardian Mobile number</li>
-  <li>Local Guardian Occupation</li>
-  <li>Name of Organization</li>
-  <li>Local Guardian Email ID</li>
-  <li>House Name/ Number</li>
-  <li>Home Town</li>
-  <li>District:<select><option>Thiruvananthapuram</option>
-<option>Kollam</option>
-<option>Pathanamthitta</option>
-<option>Alappuzha</option>
-<option>Kottayam</option>
-<option>Idukki</option>
-<option>Ernakulam</option>
-<option>Thrissur</option>
-<option>Palakkad</option>
-<option>Malappuram</option>
-<option>Kozhikode</option>
-<option>Wayanad</option>
-<option>Kannur</option>
-<option>Kasaragod</option></select></li>
-  <li>State:<p>Kerala</p></li>
-  <li>Pincode</li>
-  <li>Full Address with Pincode (Permanent)</li>
-  <li>Current Address (Permanent)</li>
-  <li>Residential Status:<select><option>Hosteller</option><option>Day Schola</option></select></li>
-  <li>10th school name</li>
-  <li>10th school state</li>
-  <li>10th school country</li>
-  <li>10th school district</li>
-  <li>10th Board</li>
-  <li>10th Total Marks</li>
-  <li>10th Percentage</li>
-  <li>10th Passout Year</li>
-  <li>12th school name</li>
-  <li>12th school state</li>
-  <li>12th school Country</li>
-  <li>12th school district</li>
-  <li>12th Board</li>
-  <li>12th Total Marks</li>
-  <li>12th Percentage</li>
-  <li>12th Passout Year</li>
-  <li>Kerala Entrance Score (if NRI plz mention NRI Quota)</li>
-  <li id="a">S1 SGPA</li>
-  <li>S1 Percentage %:<p id="a1"></li>
-  <li>S1 Supply</li>
-  <li id="b">S2 SGPA</li>
-  <li >S2 Percentage %:<p id="a1"></li>
-  <li>S2 Supply</li>
-  <li id="c">S3 SGPA</li>
-  <li>S3 Percentage %:<p id="a1"></li>
-  <li>S3 supply</li>
-  <li id="d">S4 SGPA</li>
-  <li>S4 percentage %:<p id="a1"></li>
-  <li>S4 supply</li>
-  <li id="e">S5 SGPA</li>
-  <li>S5 percentage %:<p id="a1"></li>
-  <li>S5 supply</li>
-  <li>Current %:<p id="f"></p></li>
-  <li>Current CGPA:<p id="g"></p></li>
-  <li>Total No: of Live Supply</li>
-  <li>Do you have any history of Supply<select><option>yes</option><option>no</option></select></li>
-  <li>Are you interested for Higher studies, if yes please mention the country:<input><select><option>no</option></select></li>
-  <li>Programming Languages Known (In Priority Basis)</li>
-  <li>Regional Languages Known(In priority basis)</li>
-  <li>Are you interested in Internship cum job (need to go for internship in S8):<select><option>yes</option><option>no</option></select></li>
-  <li>Have you participated in any Hackathon?:<select><option>yes</option><option>no</option></select></li>
-  <li>If Yes details</li>
-  <li>Have you attended any Certified course?:<select><option>yes</option><option>no</option></select></li>
-  <li>if so, Name of the course</li>
-  <li>Certified by</li>
-  <li>Did you attend all Placement training?:<select><option>yes</option><option>no</option></select></li>
-  <li>Internship done in</li>
-  <li>HR Name of Company</li>
-  <li>Contact no of HR</li>
-  <li>Company contact no</li>
-  <li>Internship done in</li>
-  <li>HR Name of Company</li>
-  <li>Contact no of HR</li>
-  <li>Company contact no</li>
-  <li>Class Teacher Name:<option>Mr.Wilson Joseph</option></li>
-  <li>Class Teacher Mobile No:<option>9600374739</option></li>
-  <li>Class Teacher Email Id:<p>wilsonj@rajagiritech.edu.in</p></li>
-  <li>Associate Class teacher Name</li>
-  <li>Discontued</li>
-  <li>REMARKS</li>
-  <li>PLACEMENT REPS</li>
-  <li>LinkedIn Profile</li>
-</ol> 
-  </body>
-</html>
+
+<head>
+
+  <title>Student Database Form</title>
+
+  <style>
+
+    body{
+      font-family:Arial;
+      padding:20px;
+    }
+
+    li{
+      margin-bottom:12px;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    input,select,textarea{
+      padding:5px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h2>Student Database Form</h2>
+
+<ol>
+
+  <li>
+    UID:
+    <input type="text" value="U23080">
+  </li>
+
+  <li>
+    RET No.:
+    <input type="text">
+  </li>
+
+  <li>
+    NAME:
+    <input type="text">
+  </li>
+
+  <li>
+    MIDDLE NAME:
+    <input type="text">
+  </li>
+
+  <li>
+    LAST NAME:
+    <input type="text">
+  </li>
+
+  <li>
+
+    Gender:
+
+    <select>
+
+      <option>Male</option>
+      <option>Female</option>
+
+    </select>
+
+  </li>
+
+  <li>
+    EMAIL:
+    <input type="email">
+  </li>
+
+  <li>
+    ALTERNATE EMAIL:
+    <input type="email">
+  </li>
+
+  <li>
+    MOBILE NUMBER:
+    <input type="tel">
+  </li>
+
+  <li>
+    WHATSAPP MOBILE NO:
+    <input type="tel">
+  </li>
+
+  <li>
+    ALTERNATE MOBILE NUMBER:
+    <input type="tel">
+  </li>
+
+  <li>
+    DATE OF BIRTH:
+    <input type="date">
+  </li>
+
+  <li>
+    AADHAAR NUMBER:
+    <input type="text">
+  </li>
+
+  <li>
+    PAN CARD NUMBER:
+    <input type="text">
+  </li>
+
+  <li>
+    Indian PASSPORT NUMBER:
+    <input type="text">
+  </li>
+
+
+  <li>
+
+    Do you have an OCI Card?
+
+    <select id="oci" onchange="showOCI()">
+
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+
+    </select>
+
+  </li>
+
+  <div id="ociFields" class="hidden">
+
+    <li>
+      If Yes Country Name:
+      <input type="text">
+    </li>
+
+    <li>
+      If Yes Card No:
+      <input type="text">
+    </li>
+
+  </div>
+
+  <li>
+    Driving License No:
+    <input type="text">
+  </li>
+
+  <li>
+    BLOOD GROUP:
+    <input type="text">
+  </li>
+
+  <li>
+    FATHER'S NAME:
+    <input type="text">
+  </li>
+
+  <li>
+    Father's Mobile Number:
+    <input type="tel">
+  </li>
+
+  <li>
+    Father's Occupation:
+    <input type="text">
+  </li>
+
+  <li>
+    Name of Organization:
+    <input type="text">
+  </li>
+
+  <li>
+    Father's Email ID:
+    <input type="email">
+  </li>
+
+  <li>
+    Mother's Name:
+    <input type="text">
+  </li>
+
+  <li>
+    Mother's Mobile Number:
+    <input type="tel">
+  </li>
+
+  <li>
+    Mother's Occupation:
+    <input type="text">
+  </li>
+
+  <li>
+    Mother's Email ID:
+    <input type="email">
+  </li>
+
+  <li>
+    House Name / Number:
+    <input type="text">
+  </li>
+
+  <li>
+    Home Town:
+    <input type="text">
+  </li>
+
+  <li>
+
+    District:
+
+    <select>
+
+      <option>Thiruvananthapuram</option>
+      <option>Kollam</option>
+      <option>Pathanamthitta</option>
+      <option>Alappuzha</option>
+      <option>Kottayam</option>
+      <option>Idukki</option>
+      <option>Ernakulam</option>
+      <option>Thrissur</option>
+      <option>Palakkad</option>
+      <option>Malappuram</option>
+      <option>Kozhikode</option>
+      <option>Wayanad</option>
+      <option>Kannur</option>
+      <option>Kasaragod</option>
+
+    </select>
+
+  </li>
+
+  <li>
+    State:
+    <input type="text" value="Kerala">
+  </li>
+
+  <li>
+    Pincode:
+    <input type="number">
+  </li>
+
+  <li>
+    Full Address with Pincode:
+    <textarea></textarea>
+  </li>
+
+  <li>
+    Current Address:
+    <textarea></textarea>
+  </li>
+
+  <li>
+
+    Residential Status:
+
+    <select>
+
+      <option>Hosteller</option>
+      <option>Day Scholar</option>
+
+    </select>
+
+  </li>
+
+  <li>
+    10th School Name:
+    <input type="text">
+  </li>
+
+  <li>
+    10th Percentage:
+    <input type="number">
+  </li>
+
+  <li>
+    10th Passout Year:
+    <input type="number">
+  </li>
+
+  <li>
+    12th School Name:
+    <input type="text">
+  </li>
+
+  <li>
+    12th Percentage:
+    <input type="number">
+  </li>
+
+  <li>
+    12th Passout Year:
+    <input type="number">
+  </li>
+
+  <li>
+    S1 SGPA:
+    <input type="number" id="a" step="0.01">
+  </li>
+
+  <li>
+    S2 SGPA:
+    <input type="number" id="b" step="0.01">
+  </li>
+
+  <li>
+    S3 SGPA:
+    <input type="number" id="c" step="0.01">
+  </li>
+
+  <li>
+    S4 SGPA:
+    <input type="number" id="d" step="0.01">
+  </li>
+
+  <li>
+    S5 SGPA:
+    <input type="number" id="e" step="0.01">
+  </li>
+
+  <li>
+    Current Percentage:
+    <p id="f"></p>
+  </li>
+
+  <li>
+    Current CGPA:
+    <p id="g"></p>
+  </li>
+
+  <li>
+    Total No. of Live Supply:
+    <input type="number">
+  </li>
+
+
+  <li>
+
+    Do you have any history of Supply?
+
+    <select id="supply" onchange="showSupply()">
+
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+
+    </select>
+
+  </li>
+
+  <div id="supplyFields" class="hidden">
+
+    <li>
+      Supply Details:
+      <textarea></textarea>
+    </li>
+
+  </div>
+
+
+  <li>
+
+    Interested for Higher Studies?
+
+    <select id="higher" onchange="showHigherStudies()">
+
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+
+    </select>
+
+  </li>
+
+  <div id="higherFields" class="hidden">
+
+    <li>
+      Preferred Country:
+      <input type="text">
+    </li>
+
+  </div>
+
+  <li>
+
+    Participated in Hackathon?
+
+    <select id="hackathon" onchange="showHackathon()">
+
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+
+    </select>
+
+  </li>
+
+  <div id="hackathonFields" class="hidden">
+
+    <li>
+      Hackathon Details:
+      <textarea></textarea>
+    </li>
+
+  </div>
+
+
+  <li>
+
+    Attended Certified Course?
+
+    <select id="course" onchange="showCourse()">
+
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+
+    </select>
+
+  </li>
+
+  <div id="courseFields" class="hidden">
+
+    <li>
+      Course Name:
+      <input type="text">
+    </li>
+
+    <li>
+      Certified By:
+      <input type="text">
+    </li>
+
+  </div>
+
+
+  <li>
+
+    Internship Done?
+
+    <select id="internship" onchange="showInternship()">
+
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+
+    </select>
+
+  </li>
+
+  <div id="internshipFields" class="hidden">
+
+    <li>
+      Company Name:
+      <input type="text">
+    </li>
+
+    <li>
+      HR Name:
+      <input type="text">
+    </li>
+
+    <li>
+      HR Contact Number:
+      <input type="tel">
+    </li>
+
+  </div>
+
+  <li>
+    LinkedIn Profile:
+    <input type="url">
+  </li>
+
+</ol>
+
+<button onclick="percentage()">
+
+  Calculate CGPA
+
+</button>
 
 <script>
- function percentage(){
-   z=document.getElementById("a").value();
-   y=document.getElementById("b").value();
-   x=document.getElementById("c").value();
-   w=document.getElementById("d").value();
-   u=document.getElementById("e").value();
-   per1=(z*10)-7.5;
-   per2=(y*10)-7.5;
-   per3=(x*10)-7.5;
-   per4=(w*10)-7.5;
-   per5=(v*10)-7.5;
-   t=document.getElementById("f");
-   s=document.getElementById("g");
-   total_per=((per1+per2+per3+per4+per5)/500)*100
-   totcgpa=(z+y+x+w+u)/5}
+
+function percentage(){
+
+   let z =
+   parseFloat(document.getElementById("a").value) || 0;
+
+   let y =
+   parseFloat(document.getElementById("b").value) || 0;
+
+   let x =
+   parseFloat(document.getElementById("c").value) || 0;
+
+   let w =
+   parseFloat(document.getElementById("d").value) || 0;
+
+   let u =
+   parseFloat(document.getElementById("e").value) || 0;
+
+   let per1 = (z * 10) - 7.5;
+   let per2 = (y * 10) - 7.5;
+   let per3 = (x * 10) - 7.5;
+   let per4 = (w * 10) - 7.5;
+   let per5 = (u * 10) - 7.5;
+
+   let total_per =
+   (per1 + per2 + per3 + per4 + per5) / 5;
+
+   let totcgpa =
+   (z + y + x + w + u) / 5;
+
    document.getElementById("f").innerHTML =
-      total_per.toFixed(2) + "%";
+   total_per.toFixed(2) + "%";
 
    document.getElementById("g").innerHTML =
-      totcgpa.toFixed(2);
+   totcgpa.toFixed(2);
 
-let p=document.createElement(p)
-let o=document.getElementById().value()
-if(o==="yes"){
-  
-  
+}
+
+function showOCI(){
+
+   let value =
+   document.getElementById("oci").value;
+
+   let fields =
+   document.getElementById("ociFields");
+
+   if(value=="yes"){
+
+      fields.style.display="block";
+
+   }
+
+   else{
+
+      fields.style.display="none";
+
+   }
+
+}
+
+function showSupply(){
+
+   let value =
+   document.getElementById("supply").value;
+
+   let fields =
+   document.getElementById("supplyFields");
+
+   if(value=="yes"){
+
+      fields.style.display="block";
+
+   }
+
+   else{
+
+      fields.style.display="none";
+
+   }
+
+}
+
+function showHigherStudies(){
+
+   let value =
+   document.getElementById("higher").value;
+
+   let fields =
+   document.getElementById("higherFields");
+
+   if(value=="yes"){
+
+      fields.style.display="block";
+
+   }
+
+   else{
+
+      fields.style.display="none";
+
+   }
+
+}
+
+function showHackathon(){
+
+   let value =
+   document.getElementById("hackathon").value;
+
+   let fields =
+   document.getElementById("hackathonFields");
+
+   if(value=="yes"){
+
+      fields.style.display="block";
+
+   }
+
+   else{
+
+      fields.style.display="none";
+
+   }
+
+}
+
+function showCourse(){
+
+   let value =
+   document.getElementById("course").value;
+
+   let fields =
+   document.getElementById("courseFields");
+
+   if(value=="yes"){
+
+      fields.style.display="block";
+
+   }
+
+   else{
+
+      fields.style.display="none";
+
+   }
+
+}
+
+function showInternship(){
+
+   let value =
+   document.getElementById("internship").value;
+
+   let fields =
+   document.getElementById("internshipFields");
+
+   if(value=="yes"){
+
+      fields.style.display="block";
+
+   }
+
+   else{
+
+      fields.style.display="none";
+
+   }
+
+}
 
 </script>
 
+</body>
+
+</html>
