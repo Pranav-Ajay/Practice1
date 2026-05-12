@@ -603,56 +603,52 @@ Discontinued:
 <script>
 
 
-
-document.getElementById("a").addEventListener("input", function() {
-    let val = parseFloat(this.value) || 0;
-    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
-    document.getElementById("ab").value = result; 
-    calculateTotals();
-});
-
-document.getElementById("b").addEventListener("input", function() {
-    let val = parseFloat(this.value) || 0;
-    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
-    document.getElementById("ac").value = result;
-    calculateTotals();
-});
-
-document.getElementById("c").addEventListener("input", function() {
-    let val = parseFloat(this.value) || 0;
-    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
-    document.getElementById("ad").value = result;
-    calculateTotals();
-});
-
-document.getElementById("d").addEventListener("input", function() {
-    let val = parseFloat(this.value) || 0;
-    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
-    document.getElementById("ae").value = result;
-    calculateTotals();
-});
-
-document.getElementById("e").addEventListener("input", function() {
-    let val = parseFloat(this.value) || 0;
-    let result = val > 0 ? (val * 10 - 7.5).toFixed(2) : 0;
-    document.getElementById("af").value = result;
-    calculateTotals();
-});
-
-function calculateTotals() {
-    let s1 = parseFloat(document.getElementById("a").value) || 0;
-    let s2 = parseFloat(document.getElementById("b").value) || 0;
-    let s3 = parseFloat(document.getElementById("c").value) || 0;
-    let s4 = parseFloat(document.getElementById("d").value) || 0;
-    let s5 = parseFloat(document.getElementById("e").value) || 0;
-
-    totper=((s1+s2+s3+s4+s5)/500)*100;
-    totcgpa=(a+b+c+d+e)/5;
-
-        document.getElementById("g").innerText = totper;
-        document.getElementById("f").innerText = totcgpa + "%";
-    }
+function calculatePercentage(sgpa){
+    return sgpa > 0 ? ((sgpa * 10) - 7.5).toFixed(2) : "";
 }
+
+function calculateTotals(){
+
+    let ids = ["a","b","c","d","e"];
+
+    let values = ids.map(id => parseFloat(document.getElementById(id).value) || 0);
+
+    let valid = values.filter(v => v > 0);
+
+    if(valid.length === 0){
+        document.getElementById("f").innerText = "0%";
+        document.getElementById("g").innerText = "0";
+        return;
+    }
+
+    let avgCgpa = valid.reduce((a,b)=>a+b,0) / valid.length;
+
+    let avgPer = (avgCgpa * 10) - 7.5;
+
+    document.getElementById("g").innerText = avgCgpa.toFixed(2);
+
+    document.getElementById("f").innerText = avgPer.toFixed(2) + "%";
+}
+
+function attachSGPAListener(sgpaId, perId){
+
+    document.getElementById(sgpaId).addEventListener("input", function(){
+
+        let value = parseFloat(this.value) || 0;
+
+        document.getElementById(perId).value = calculatePercentage(value);
+
+        calculateTotals();
+    });
+}
+
+attachSGPAListener("a","ab");
+attachSGPAListener("b","ac");
+attachSGPAListener("c","ad");
+attachSGPAListener("d","ae");
+attachSGPAListener("e","af");
+
+
 
 document.getElementById("oci").addEventListener("change", function(){
 
