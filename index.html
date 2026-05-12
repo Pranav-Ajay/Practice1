@@ -67,12 +67,6 @@ h3{
 
 <h2>Student Database Form</h2>
 
-<div style="margin-bottom:20px;padding:15px;border:1px solid #ccc;background:#f9f9f9;">
-    <h3>Save to Database</h3>
-    <p>Select your Excel database file.</p>
-    <input type="file" id="excelInput" accept=".xlsx,.xls">
-</div>
-
 <ol class="alldetails">
 
 <h3>Basic Details</h3>
@@ -543,82 +537,128 @@ function getDetails(){
     return data;
 }
 
-function saveDetails(){
+async function saveDetails(){
 
     let details = getDetails();
 
-    localStorage.setItem("details", JSON.stringify(details));
+    // LOCAL STORAGE
 
-    alert("Details saved locally.");
-}
+    localStorage.setItem(
+        "details",
+        JSON.stringify(details)
+    );
 
-document.getElementById("excelInput").addEventListener("change", function(event){
+    // GITHUB DETAILS
 
-    let file = event.target.files[0];
+    const token = "YOUR_GITHUB_TOKEN";
 
-    if(!file) return;
+    const owner = "YOUR_GITHUB_USERNAME";
 
-    let reader = new FileReader();
+    const repo = "YOUR_REPOSITORY_NAME";
 
-    reader.onload = function(e){
+    const path = "student_database.json";
 
-        let data = new Uint8Array(e.target.result);
+    const url =
+    `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
 
-        let workbook = XLSX.read(data,{type:'array'});
+    let existingData = [];
 
-        let sheetName = workbook.SheetNames[0];
+    let sha = "";
 
-        let worksheet = workbook.Sheets[sheetName];
+    // FETCH EXISTING DATA
 
-        let rows = XLSX.utils.sheet_to_json(worksheet,{header:1});
+    try{
 
-        let formData = getDetails();
+        const response = await fetch(url,{
 
-        let uid = document.getElementById("uid").value.trim();
-
-        let found = false;
-
-        for(let i=1;i<rows.length;i++){
-
-            if(rows[i][0] && rows[i][0].toString().trim() === uid){
-
-                rows[i] = formData;
-
-                found = true;
-
-                break;
+            headers:{
+                Authorization:`token ${token}`
             }
+        });
+
+        const fileData = await response.json();
+
+        sha = fileData.sha;
+
+        const decoded = atob(fileData.content);
+
+        existingData = JSON.parse(decoded);
+
+    }
+
+    catch(error){
+
+        existingData = [];
+    }
+
+    // CHECK UID
+
+    const uid =
+    document.getElementById("uid").value.trim();
+
+    let found = false;
+
+    existingData = existingData.map(student=>{
+
+        if(student[0] === uid){
+
+            found = true;
+
+            return details;
         }
 
-        if(!found){
+        return student;
+    });
 
-            rows.push(formData);
-        }
+    // ADD NEW STUDENT
 
-        let newSheet = XLSX.utils.aoa_to_sheet(rows);
+    if(!found){
 
-        workbook.Sheets[sheetName] = newSheet;
+        existingData.push(details);
+    }
 
-        XLSX.writeFile(workbook,"Updated_AD_Batch_Database.xlsx");
+    // CONVERT TO BASE64
 
-        alert(found ?
-        "Existing student updated successfully." :
-        "New student added successfully.");
-    };
+    const updatedContent =
+    btoa(JSON.stringify(existingData,null,2));
 
-    reader.readAsArrayBuffer(file);
-});
+    // UPLOAD TO GITHUB
 
-let allFields = document.querySelectorAll(
-".alldetails input, .alldetails select, .alldetails textarea"
-);
+    const updateResponse = await fetch(url,{
 
-allFields.forEach(field => {
+        method:"PUT",
 
-    field.addEventListener("input", autoSave);
+        headers:{
 
-    field.addEventListener("change", autoSave);
-});
+            Authorization:`token ${token}`,
+
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            message: found ?
+            "Updated student details" :
+            "Added new student",
+
+            content:updatedContent,
+
+            sha:sha
+        })
+    });
+
+    if(updateResponse.ok){
+
+        alert(
+        "Details saved locally and uploaded to GitHub."
+        );
+    }
+
+    else{
+
+        alert("Error uploading to GitHub.");
+    }
+}
 
 function autoSave(){
 
