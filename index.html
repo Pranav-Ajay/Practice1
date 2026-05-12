@@ -695,56 +695,37 @@ const columnHeaders = [
 ];
 
 async function saveDetails() {
-    let data = {};
+    const columnHeaders = [
+        "UID Number", "RET No.", "FIRST NAME", "MIDDLE NAME", "LAST NAME", "FULL NAME", "Gender", "COURSE", "BRANCH WISE", "BR", "Branch Full Name", "EMAIL", "ALTERNATE EMAIL", "RAJAGIRI DOMAIN EMAIL ID", "MOBILE NUMBER", "WHATSAPP MOBILE NO", "ALTERNATE MOBILE NUMBER", "DATE OF BIRTH (MM-DD-YYYY)", "DATE OF BIRTH (DD-MM-YYYY)", "AADHAAR NUMBER", "PAN CARD NUMBER", "Indian PASSPORT NUMBER", "Do you have an OCI Card", "If Yes Country Name", "If Yes Card No", "Driving License No.", "BLOOD GROUP", "FATHER'S NAME", "Father's Mobile number", "Father's Occupation", "Name of the Organization", "Father's Email ID", "Mother's Name", "Mother's Mobile number", "Mother's Occupation", "Name of Organization", "Mother's Email ID", "Local Guardian Name", "Local Guardian Mobile number", "Local Guardian Occupation", "Name of Organization.1", "Local Guardian Email ID", "House Name/ Number", "Home Town", "District", "State", "Pincode", "Full Address with Pincode (Permanent)", "Current Address (Permanent)", "Residential Status Hosteller/Day Scholar", "10th school name", "10th school state", "10th school country", "10th school district", "10th Board", "10th Total Marks", "10th Percentage", "10th Passout Year", "12th school name", "12th school state", "12th school Country", "12th school district", "12th Board", "12th Total Marks", "12th Percentage", "12th Passout Year", "Kerala Entrance Score (if NRI plz mention NRI Quota)", "S1 SGPA", "S1 Percentage %", "S1 Supply", "S2 SGPA", "S2 Percentage %", "S2 Supply", "S3 SGPA", "S3 Percentage %", "S3 supply", "S4 SGPA", "S4 percentage %", "S4 supply", "S5 SGPA", "S5 percentage %", "S5 supply", "S6 SGPA", "S6 percentage %", "S6 Supply", "S7 SGPA", "S7 Percentage", "S7 Supply", "S8 SGPA", "S8 Percentage", "S8 Supply", "Current %", "Current CGPA", "Total No: of Live Supply", "Do you have any history of Supply", "Are you interested for Higher studies, if yes please mention the country", "Programming Languages Known (In Priority Basis)", "Regional Languages Known(In priority basis)", "Are you interested in Internship cum job (need to go for internship in S8)", "Have you participated in any Hackathon?", "If Yes details", "Have you attended any Certified course?", "if so, Name of the course", "Certified by", "Did you attend all Placement training?", "Internship done in", "HR Name of Company", "Contact no of HR", "Company contact no", "Internship done in.1", "HR Name of Company.1", "Contact no of HR.1", "Company contact no.1", "Class Teacher Name", "Class Teacher Mobile No", "Class Teacher Email Id", "Associate Class teacher Name", "Discontued", "REMARKS", "PLACEMENT REPS", "LinkedIn Profile"
+    ];
+
+    let payload = {};
     let fields = document.querySelectorAll(".alldetails input, .alldetails select, .alldetails textarea");
     
     let fieldIdx = 0;
-    columnHeaders.forEach((header, index) => {
+    columnHeaders.forEach((header) => {
         if (header === "Current %") {
-            data[header] = document.getElementById("f").innerText;
+            payload[header] = document.getElementById("f").innerText;
         } else if (header === "Current CGPA") {
-            data[header] = document.getElementById("g").innerText;
-        } else {
-            if (fields[fieldIdx]) {
-                data[header] = fields[fieldIdx].value;
-                fieldIdx++;
+            payload[header] = document.getElementById("g").innerText;
+        } else if (fields[fieldIdx]) {
+            if (header === "AADHAAR NUMBER" && fields[fieldIdx].value.length > 0) {
+                payload[header] = "[Redacted for Privacy]"; 
+            } else {
+                payload[header] = fields[fieldIdx].value;
             }
+            fieldIdx++;
         }
     });
 
-    if (data["AADHAAR NUMBER"]) data["AADHAAR NUMBER"] = "[Aadhaar Redacted]";
-
-    const response = await fetch("https://script.google.com/a/macros/rajagiri.edu.in/s/AKfycbxm_R2OpQ7tF1SDrRbczPxe0eYs-eUXVUf0zsrkU5oHJixrfGRfY8C2EMy1B8SPKgS15Q/exec", {
+    const response = await fetch("https://script.google.com/a/macros/rajagiri.edu.in/s/AKfycbyQZFwC9ak2YwmcvwjGd30zQbUyPk2R7OP1x2S5x-pUIwZeua92nRczjCDHGdmawaJGvw/exec", {
         method: "POST",
-        body: JSON.stringify(data)
+        body: JSON.stringify(payload)
     });
 
     const result = await response.text();
     alert(result);
 }
-
-document.getElementById("fname").addEventListener("change", function() {
-    const selectedName = this.value;
-    const student = studentDatabase[selectedName];
-    
-    if (student) {
-        let fields = document.querySelectorAll(".alldetails input, .alldetails select, .alldetails textarea");
-        let fieldIdx = 0;
-        
-        columnHeaders.forEach((header) => {
-            if (header !== "Current %" && header !== "Current CGPA") {
-                if (fields[fieldIdx] && student[header] !== undefined) {
-                    fields[fieldIdx].value = student[header] || "";
-                }
-                fieldIdx++;
-            }
-        });
-        calculateTotals();
-    }
-});
-
-</script>
-
 </script>
 
 </body>
