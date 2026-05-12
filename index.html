@@ -712,122 +712,55 @@ function getDetails(){
     return data;
 }
 
-async function saveDetails(){
+   async function saveDetails() {
 
-    let details = getDetails();
+    let data = {
 
+        uid: document.getElementById("uid").value,
 
-    localStorage.setItem(
-        "details",
-        JSON.stringify(details)
+        retno: document.querySelectorAll("input")[1].value,
+
+        firstname: document.getElementById("fname").value,
+
+        middlename: document.getElementById("mname").value,
+
+        lastname: document.getElementById("lname").value,
+
+        fullname: document.getElementById("fullname").value,
+
+        gender: document.querySelectorAll("select")[1].value,
+
+        course: "Btech",
+
+        branch: "AD",
+
+        br: "AD",
+
+        branchfullname:
+        "Artificial Intelligence & Data Science",
+
+        email: document.querySelector("input[type='email']").value,
+
+        alternateemail:
+        document.querySelectorAll("input[type='email']")[1].value,
+
+        rajagiriemail:
+        document.querySelectorAll("select")[2].value
+    };
+
+    const response = await fetch(
+        "https://script.google.com/a/macros/rajagiri.edu.in/s/AKfycby6UC9p3T-9faiha7XRoUoLoRj8Inw-Ne30HMOhJMeCa3RfHG0_-riP4J9zF6ver-mH-Q/exec",
+        {
+            method: "POST",
+            body: JSON.stringify(data)
+        }
     );
 
+    const result = await response.text();
 
-    const token = "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";
-
-    const owner = "Pranav-Ajay";
-
-    const repo = "Practice1";
-
-    const path = "2023-2027 AD BATCH DATABASE.json";;
-
-    const url =
-    `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-
-    let existingData = [];
-
-    let sha = "";
-
-
-    try{
-
-        const response = await fetch(url,{
-
-            headers:{
-                Authorization:`token ${token}`
-            }
-        });
-
-        const fileData = await response.json();
-
-        sha = fileData.sha;
-
-        const decoded = atob(fileData.content);
-
-        existingData = JSON.parse(decoded);
-
-    }
-
-    catch(error){
-
-        existingData = [];
-    }
-
-
-    const uid =
-    document.getElementById("uid").value.trim();
-
-    let found = false;
-
-    existingData = existingData.map(student=>{
-
-        if(student[0] === uid){
-
-            found = true;
-
-            return details;
-        }
-
-        return student;
-    });
-
-
-    if(!found){
-
-        existingData.push(details);
-    }
-
-
-    const updatedContent =
-    btoa(JSON.stringify(existingData,null,2));
-
-
-    const updateResponse = await fetch(url,{
-
-        method:"PUT",
-
-        headers:{
-
-            Authorization:`token ${token}`,
-
-            "Content-Type":"application/json"
-        },
-
-        body:JSON.stringify({
-
-            message: found ?
-            "Updated student details" :
-            "Added new student",
-
-            content:updatedContent,
-
-            sha:sha
-        })
-    });
-
-    if(updateResponse.ok){
-
-        alert(
-        "Details saved locally and uploaded to GitHub."
-        );
-    }
-
-    else{
-
-        alert("Error uploading to GitHub.");
-    }
+    alert(result);
 }
-
+    
 function autoSave(){
 
     let details = getDetails();
