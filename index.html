@@ -541,14 +541,12 @@ async function saveDetails(){
 
     let details = getDetails();
 
-    // LOCAL STORAGE
 
     localStorage.setItem(
         "details",
         JSON.stringify(details)
     );
 
-    // GITHUB DETAILS
 
     const token = "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";
 
@@ -565,7 +563,6 @@ async function saveDetails(){
 
     let sha = "";
 
-    // FETCH EXISTING DATA
 
     try{
 
@@ -591,7 +588,6 @@ async function saveDetails(){
         existingData = [];
     }
 
-    // CHECK UID
 
     const uid =
     document.getElementById("uid").value.trim();
@@ -610,19 +606,16 @@ async function saveDetails(){
         return student;
     });
 
-    // ADD NEW STUDENT
 
     if(!found){
 
         existingData.push(details);
     }
 
-    // CONVERT TO BASE64
 
     const updatedContent =
     btoa(JSON.stringify(existingData,null,2));
 
-    // UPLOAD TO GITHUB
 
     const updateResponse = await fetch(url,{
 
