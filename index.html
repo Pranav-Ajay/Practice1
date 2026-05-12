@@ -175,7 +175,76 @@ Gender:
 
 <li>ALTERNATE EMAIL: <input type="email"></li>
 
-<li>RAJAGIRI DOMAIN EMAIL ID: <input type="text" id="rajagiriMail" readonly></li>
+<li>RAJAGIRI DOMAIN EMAIL ID:<select> <option>U2308001@rajagiri.edu.in</option>
+<option>U2308002@rajagiri.edu.in</option>
+<option>U2308003@rajagiri.edu.in</option>
+<option>U2308004@rajagiri.edu.in</option>
+<option>U2308005@rajagiri.edu.in</option>
+<option>U2308007@rajagiri.edu.in</option>
+<option>U2308008@rajagiri.edu.in</option>
+<option>U2308009@rajagiri.edu.in</option>
+<option>U2308010@rajagiri.edu.in</option>
+<option>U2308011@rajagiri.edu.in</option>
+<option>U2308012@rajagiri.edu.in</option>
+<option>U2308013@rajagiri.edu.in</option>
+<option>U2308014@rajagiri.edu.in</option>
+<option>U2308015@rajagiri.edu.in</option>
+<option>U2308016@rajagiri.edu.in</option>
+<option>U2308017@rajagiri.edu.in</option>
+<option>U2308018@rajagiri.edu.in</option>
+<option>U2308019@rajagiri.edu.in</option>
+<option>U2308020@rajagiri.edu.in</option>
+<option>U2308021@rajagiri.edu.in</option>
+<option>U2308022@rajagiri.edu.in</option>
+<option>U2308023@rajagiri.edu.in</option>
+<option>U2308024@rajagiri.edu.in</option>
+<option>U2308025@rajagiri.edu.in</option>
+<option>U2308026@rajagiri.edu.in</option>
+<option>U2308027@rajagiri.edu.in</option>
+<option>U2308028@rajagiri.edu.in</option>
+<option>U2308029@rajagiri.edu.in</option>
+<option>U2308030@rajagiri.edu.in</option>
+<option>U2308031@rajagiri.edu.in</option>
+<option>U2308032@rajagiri.edu.in</option>
+<option>U2308033@rajagiri.edu.in</option>
+<option>U2308034@rajagiri.edu.in</option>
+<option>U2308035@rajagiri.edu.in</option>
+<option>U2308036@rajagiri.edu.in</option>
+<option>U2308037@rajagiri.edu.in</option>
+<option>U2308038@rajagiri.edu.in</option>
+<option>U2308039@rajagiri.edu.in</option>
+<option>U2308040@rajagiri.edu.in</option>
+<option>U2308041@rajagiri.edu.in</option>
+<option>U2308042@rajagiri.edu.in</option>
+<option>U2308043@rajagiri.edu.in</option>
+<option>U2308044@rajagiri.edu.in</option>
+<option>U2308045@rajagiri.edu.in</option>
+<option>U2308046@rajagiri.edu.in</option>
+<option>U2308047@rajagiri.edu.in</option>
+<option>U2308048@rajagiri.edu.in</option>
+<option>U2308049@rajagiri.edu.in</option>
+<option>U2308050@rajagiri.edu.in</option>
+<option>U2308051@rajagiri.edu.in</option>
+<option>U2308052@rajagiri.edu.in</option>
+<option>U2308053@rajagiri.edu.in</option>
+<option>U2308054@rajagiri.edu.in</option>
+<option>U2308055@rajagiri.edu.in</option>
+<option>U2308056@rajagiri.edu.in</option>
+<option>U2308057@rajagiri.edu.in</option>
+<option>U2308058@rajagiri.edu.in</option>
+<option>U2308059@rajagiri.edu.in</option>
+<option>U2308061@rajagiri.edu.in</option>
+<option>U2308062@rajagiri.edu.in</option>
+<option>U2308063@rajagiri.edu.in</option>
+<option>U2308064@rajagiri.edu.in</option>
+<option>U2308065@rajagiri.edu.in</option>
+<option>U2308066@rajagiri.edu.in</option>
+<option>U2308067@rajagiri.edu.in</option>
+<option>U2308068@rajagiri.edu.in</option>
+<option>U2308069@rajagiri.edu.in</option>
+<option>U2308070@rajagiri.edu.in</option>
+<option>U2308071@rajagiri.edu.in</option>
+<option>U2308072@rajagiri.edu.in</option></select></li>
 
 <li>MOBILE NUMBER: <input type="tel"></li>
 
@@ -469,10 +538,8 @@ Discontinued:
 
 <script>
 
-let xcs=document.getElementById("vcx").value()
-let avc=document.getElementById("fullname").value()
-avc=xcs.innerText
-    
+
+
 
 function calculatePercentage(sgpa){
     return sgpa > 0 ? ((sgpa * 10) - 7.5).toFixed(2) : "";
@@ -551,20 +618,13 @@ document.getElementById("course").addEventListener("change", function(){
 
 function updateFullName(){
 
-    let first = document.getElementById("fname").value.trim();
+    let first = document.getElementById("fname").value;
 
-    let middle = document.getElementById("mname").value.trim();
+    let full = document.getElementById("fullname");
 
-    let last = document.getElementById("lname").value.trim();
+    full.value = first;
 
-    let full = [first,middle,last].filter(Boolean).join(" ");
-
-    document.getElementById("fullname").value = full;
-
-    if(first){
-        document.getElementById("rajagiriMail").value =
-        first.toLowerCase() + "@rajagiritech.edu.in";
-    }
+    return first;
 }
 
 document.getElementById("fname").addEventListener("input", updateFullName);
