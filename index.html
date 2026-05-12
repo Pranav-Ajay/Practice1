@@ -639,36 +639,25 @@ attachSGPAListener("c","ad");
 attachSGPAListener("d","ae");
 attachSGPAListener("e","af");
 
+function handleToggle(selectId, targetId) {
+    const selectEl = document.getElementById(selectId);
+    const targetEl = document.getElementById(targetId);
 
+    if (selectEl && targetEl) {
+        selectEl.addEventListener("change", function() {
+            targetEl.style.display = this.value === "yes" ? "block" : "none";
+        });
+        
+        targetEl.style.display = selectEl.value === "yes" ? "block" : "none";
+    }
+}
 
-document.getElementById("oci").addEventListener("change", function(){
-
-    document.getElementById("ociFields").style.display =
-    this.value === "yes" ? "block" : "none";
-});
-
-document.getElementById("supply").addEventListener("change", function(){
-
-    document.getElementById("supplyFields").style.display =
-    this.value === "yes" ? "block" : "none";
-});
-
-document.getElementById("higher").addEventListener("change", function(){
-
-    document.getElementById("higherFields").style.display =
-    this.value === "yes" ? "block" : "none";
-});
-
-document.getElementById("hackathon").addEventListener("change", function(){
-
-    document.getElementById("hackathonFields").style.display =
-    this.value === "yes" ? "block" : "none";
-});
-
-document.getElementById("course").addEventListener("change", function(){
-
-    document.getElementById("courseFields").style.display =
-    this.value === "yes" ? "block" : "none";
+document.addEventListener("DOMContentLoaded", function() {
+    handleToggle("oci", "ociFields");
+    handleToggle("supply", "supplyFields");
+    handleToggle("higher", "higherFields");
+    handleToggle("hackathon", "hackathonFields");
+    handleToggle("course", "courseFields");
 });
 
 function updateFullName(){
